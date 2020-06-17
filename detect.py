@@ -101,11 +101,10 @@ def detect(save_img=False):
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         
                         # my code..
-                        bbox = xywh2xyxy(np.array(xywh).reshape(1,-1)).reshape(-1)            
+                        bbox = xywh2xyxy(np.array(xywh).reshape(1,-1)).reshape(-1) * 640        
                         yoloFName = save_path[:save_path.rfind('.')] + '.txt'
                         bboxFName = save_path[:save_path.rfind('.')] + '_bbox.txt'
-                      
-                        
+                                  
                         with open(yoloFName, 'a') as file:
                             file.write(('%g ' * 5 + '\n') % (cls, *xywh))  # label format
                             
