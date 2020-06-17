@@ -109,6 +109,8 @@ def detect(save_img=False):
                             
                         with open(bboxFName, 'a') as file:
                             file.write(('%g ' * 5 + '\n') % (cls, *bbox))  # label format
+                            
+                        print(yoloFName, bboxFName)
 
                     if save_img or view_img:  # Add bbox to image
                         label = '%s %.2f' % (names[int(cls)], conf)
