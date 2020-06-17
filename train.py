@@ -121,6 +121,14 @@ def train(hyp):
                 % (opt.weights, opt.cfg, opt.weights)
             raise KeyError(s) from e
 
+        # Freeze bottom layers
+        print("enable transfer learning....")
+        for j, children in enumerate(model.children()):
+          for i, child in enumerate(children):
+            if i < 10:
+              for param in child.parameters():
+                param.requires_grad = False
+                
         # load optimizer
         if ckpt['optimizer'] is not None:
             optimizer.load_state_dict(ckpt['optimizer'])
