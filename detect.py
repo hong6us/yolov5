@@ -101,7 +101,8 @@ def detect(save_img=False):
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         
                         # my code...
-                        bbox = xywh2xyxy(*xywh)
+                        print(xywh)
+                        bbox = xywh2xyxy(xywh)
                         yoloFName = save_path[:save_path.rfind('.')] + '.txt'
                         bboxFName = save_path[:save_path.rfind('.')] + '_bbox.txt'
                         
