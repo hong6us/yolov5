@@ -20,7 +20,7 @@ def test(data,
          model=None,
          dataloader=None,
          fast=False,
-         verbose=False):  # 0 fast, 1 accurate
+         verbose=True):  # 0 fast, 1 accurate
     # Initialize/load model and set device
     if model is None:
         device = torch_utils.select_device(opt.device, batch_size=batch_size)
