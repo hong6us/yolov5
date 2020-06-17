@@ -6,7 +6,7 @@ from utils.utils import *
 
 def detect(save_img=False):
     out, source, weights, half, view_img, save_txt, imgsz = \
-        opt.output, opt.source, opt.weights, opt.half, opt.view_img, opt.save_txt, opt.img_size
+        opt.output, opt.source, opt.weights, opt.half, opt.view_img, True, opt.img_size
     webcam = source == '0' or source.startswith('rtsp') or source.startswith('http') or source.endswith('.txt')
 
     # Initialize
