@@ -102,7 +102,7 @@ def detect(save_img=False):
                         
                         # my code...
                         print(xywh)
-                        bbox = xywh2xyxy(xywh)
+                        bbox = xywh2xyxy(np.array(xywh).reshape(0,-1))
                         yoloFName = save_path[:save_path.rfind('.')] + '.txt'
                         bboxFName = save_path[:save_path.rfind('.')] + '_bbox.txt'
                         
