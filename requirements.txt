@@ -8,6 +8,7 @@ tqdm
 pillow
 tensorboard
 pyyaml
+torchvision
 
 
 # Nvidia Apex (optional) for mixed precision training --------------------------
