@@ -100,18 +100,20 @@ def detect(save_img=False):
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         
-                        # my code..
+              
+                        # Export bbox
                         bbox = xywh2xyxy(np.array(xywh).reshape(1,-1)).reshape(-1) * 640   # converted back
-                        yoloFName = save_path[:save_path.rfind('.')] + '.txt' # yolo format
+                        yoloFName = save_path[:save_path.rfind('.')] + '_yolo.txt' # yolo format
                         bboxFName = save_path[:save_path.rfind('.')] + '_bbox.txt' # bbox format
                                   
                         with open(yoloFName, 'a') as file:
-                            file.write(('%g ' * 5 + '\n') % (cls, *xywh))  # label format
+                            file.write(('%s '+'%g ' * 6 + '\n') % (names[int(cls)],cls,conf, *xywh))  # label format
                             
                         with open(bboxFName, 'a') as file:
-                            file.write(('%g ' * 5 + '\n') % (cls, *bbox))  # label format
+                            file.write(('%s '+'%g ' * 6 + '\n') % (names[int(cls)],cls,conf, *bbox))  # label format
                             
                         print(yoloFName, bboxFName)
+
 
                     if save_img or view_img:  # Add bbox to image
                         label = '%s %.2f' % (names[int(cls)], conf)
